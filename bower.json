@@ -1,0 +1,23 @@
+{
+  "name": "sn-code-analyser",
+  "description": "code analyser tool",
+  "main": "",
+  "authors": [
+    "swapan shaw"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.2",
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}
