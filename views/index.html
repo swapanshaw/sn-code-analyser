@@ -42,11 +42,13 @@
                     <li>
                         <a href="/dashboard">Dashboard</a>
                     </li>
-                    <li ng-hide="loggedIn">
+                    <li ng-hide="hasLoggedIn">
                         <a href="/login">Login</a>
                     </li>
-                    <li ng-show="loggedIn"> <a href="#"><strong>Welcome {{userName}}</strong></a>
-
+                    <li ng-show="hasLoggedIn"> <a href="#"><strong>Welcome {{userName}}</strong></a>           
+                    </li>
+                    <li ng-show="hasLoggedIn">
+                        <a href="/logout" class="btn btn-small btn-warning"> Logout</button></a>
                     </li>
                 </ul>
             </div>
