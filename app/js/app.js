@@ -10,6 +10,10 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: '../pages/login.html',
       controller: 'loginCtrl'
     }).
+    when('/dashboard', {
+      templateUrl: '../pages/dashboard.html',
+      controller: 'dashboardCtrl'
+    }).
     when('/', {
       templateUrl: '../pages/home.html',
       controller: 'homeCtrl'

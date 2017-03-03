@@ -5,14 +5,13 @@
 
 const express = require('express');
 const  bodyParser = require('body-parser');
-const methodOverride = require('method-override');
   //errorHandler = require('error-handler'),
 const morgan = require('morgan');
 const index = require('./routes/index');
 const api = require('./routes/api');
 const http = require('http');
 const path = require('path');
-  
+var sessions = require("client-sessions");
 const app = express();
 
 
@@ -33,7 +32,7 @@ app.use(morgan('dev'));
 //body parser midleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(methodOverride());
+
 app.use(express.static(path.join(__dirname, 'app')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
@@ -43,6 +42,14 @@ var env = process.env.NODE_ENV || 'development';
 if (env === 'development') {
   //app.use(express.errorHandler());
 }
+
+
+app.use(sessions({
+    cookieName: 'session',
+    secret: 'af*asdf+_)))==asdf afcmnoadfadf',
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+}));
 
 // production only
 if (env === 'production') {
