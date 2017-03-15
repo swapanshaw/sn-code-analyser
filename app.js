@@ -30,6 +30,7 @@ app.engine('html', require('ejs').renderFile);
 app.use(morgan('dev'));
 
 //body parser midleware
+app.use(bodyParser.text());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -43,13 +44,6 @@ if (env === 'development') {
   //app.use(express.errorHandler());
 }
 
-
-app.use(sessions({
-    cookieName: 'session',
-    secret: 'af*asdf+_)))==asdf afcmnoadfadf',
-    duration: 30 * 60 * 1000,
-    activeDuration: 5 * 60 * 1000,
-}));
 
 // production only
 if (env === 'production') {
