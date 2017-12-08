@@ -17,8 +17,8 @@ angular.module('snCodeAnalyserApp.services', [])
           'password': password
         }
       }).then(function sucess(response) {
-        return response;
-      },
+          return response;
+        },
         function error(err) {
 
         });
