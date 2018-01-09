@@ -38,9 +38,30 @@ angular.module('snCodeAnalyserApp.controllers', ['snCodeAnalyserApp.services', '
       $cookies.remove('userName');
       $location.path("/home");
   }]).
-  controller('dashboardCtrl', ['$scope', '$rootScope','$cookies', function ($scope, $rootScope, $cookies) {
+  controller('dashboardCtrl', ['$scope', 'bluePrintsService', function ($scope, bluePrintsService) {
     console.log('Daashboard Ctrl');
-    $rootScope.hasLoggedIn = isAutheticated($rootScope, $cookies);
+    $scope.blueprints = bluePrintsService.getEmployeebyName($scope.name)
+
+    $scope.$on('myEvent', function(event, data) {
+      switch (data.category) {
+        case "LB":
+          $scope.lb = data;
+          break;
+         case "WS":
+          $scope.ws = data;
+          break;
+         case "AS":
+          $scope.as = data;
+          break;
+         case "DB":
+          $scope.db = data;
+          break;
+        default:
+          break;
+      }
+      
+      $scope.$apply();
+    })
   }]);
 
 /**

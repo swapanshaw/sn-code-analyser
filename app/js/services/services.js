@@ -25,4 +25,38 @@ angular.module('snCodeAnalyserApp.services', [])
 
       return promise;
     }
-  }]);
+  }])
+    .factory('bluePrintsService', function() {
+  return {
+    getEmployeebyName: function(name) {
+      
+      var bluePrintArr = [
+          {
+            name: "F5 load balncer",
+            description : "f5 load balncer for webapp",
+            imgUrl: 'https://media.istockphoto.com/photos/the-spokane-river-centennial-trail-picture-id512597572',
+            category: 'LB'
+          },
+          {
+            name: "web app server",
+            description : "Webapp server",
+            imgUrl: 'https://media.istockphoto.com/photos/the-spokane-river-centennial-trail-picture-id512597572',
+            category: 'WS'
+          },
+          {
+            name: "Apache Tomcat",
+            description : "Tomcate App Server",
+            imgUrl: 'https://media.istockphoto.com/photos/the-spokane-river-centennial-trail-picture-id512597572',
+            category: 'AS'
+          },
+          {
+            name: "Mongo DB",
+            description : "Mongo Db no sql databse",
+            imgUrl: 'https://media.istockphoto.com/photos/the-spokane-river-centennial-trail-picture-id512597572',
+            category: 'DB'
+          }
+        ];
+      return bluePrintArr
+    }
+  }
+});

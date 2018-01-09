@@ -49,11 +49,6 @@ h6 {
   font-weight: 200;
   letter-spacing: 1px;
 }
-p {
-  font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
 .navbar-default {
   background-color: white;
   border-color: rgba(34, 34, 34, 0.05);
@@ -443,4 +438,22 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #222222;
+}
+
+.content {
+  font-size: 14px;
+  padding: 5%; 
+}
+
+
+.blueprint-container {
+  border: 1px solid #222222;
+  box-shadow: 4px 4px 8px rgba(155, 200, 0, 1);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.selected-app {
+    border: 2px dotted #222222;
+    border-radius: 5px;
 }
