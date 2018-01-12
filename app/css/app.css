@@ -448,12 +448,37 @@ body {
 
 .blueprint-container {
   border: 1px solid #222222;
-  box-shadow: 4px 4px 8px rgba(155, 200, 0, 1);
+  box-shadow:  5px 5px 2px #888888;
   transition: 0.3s;
   border-radius: 5px;
+  
 }
 
-.selected-app {
-    border: 2px dotted #222222;
-    border-radius: 5px;
+.count-x {
+    float: left;
+    margin: -15px;
+    position: inherit;
+}
+
+.drag {
+  opacity: 2;
+}
+.over {
+  background: red;
+}
+
+.blueprint-selected-container {
+  border-radius: 5px;
+  border: 1px dotted Black;
+  margin: 20px 0px 20px 0px;
+  box-shadow: 5px 5px 2px #888888;
+  height: 80px;
+}
+
+.close-x {
+    float: right;
+    position: inherit;
+	  color: white;
+    margin:-15px;
+    border-radius: 3px;
 }

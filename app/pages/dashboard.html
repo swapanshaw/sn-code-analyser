@@ -1,26 +1,31 @@
 <section id="features" class="features">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
+            <div class="col-sm-9 text-center">
+
                 <div class="section-heading">
                     <h2>App Modeling</h2>
                     <p class="text-muted">Select App and model your server!</p>
                     <hr>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-9 text-center">
-                <div class="col-sm-3" ng-repeat="x in blueprints">
+
+                <div class="col-sm-3" ng-repeat="x in blueprints" draggable blueprint="x">
                     <app-stores blueprint="x"></app-stores>
+                    <hr/>
                 </div>
             </div>
-
             <div class="col-sm-3 text-center">
-                <div class="panel panel-default">
+                <div class="">
                     <div class="panel-heading">Selected Apps</div>
-                    <div class="panel-body">
-                        <div class="blueprint-container" ng-show="lb.name">
+                    <div class="blueprint-selected-container" droppable drop="handleDrop" >
+                        <button class="close-x">
+                                X
+                        </button>
+                        <button class="count-x">
+                                1
+                        </button>
+                        <div class="" ng-show="lb.name">
+                            
                             <div class="row" ng-click="show()">
                                 <div class="col-sm-6"><img src={{lb.imgUrl}} alt="Avatar" width="100%"> </div>
                                 <div class="col-sm-6">
@@ -31,7 +36,13 @@
                         <div class="selected-app" ng-show="!lb.name">Load Balancer</div>
                     </div>
 
-                    <div class="panel-body">
+                    <div class="blueprint-selected-container" droppable drop="handleDrop">
+                        <button class="close-x">
+                                X
+                        </button>
+                        <button class="count-x">
+                                2
+                        </button>
                         <div class="blueprint-container" ng-show="ws.name">
                             <div class="row" ng-click="show()">
                                 <div class="col-sm-6"><img src={{ws.imgUrl}} alt="Avatar" width="100%"> </div>
@@ -43,7 +54,13 @@
                         <div class="selected-app" ng-show="!ws.name">Web Server</div>
                     </div>
 
-                    <div class="panel-body">
+                    <div class="blueprint-selected-container" droppable drop="handleDrop">
+                        <button class="close-x">
+                                X
+                        </button>
+                        <button class="count-x">
+                                3
+                        </button>
                         <div class="blueprint-container" ng-show="as.name">
                             <div class="row" ng-click="show()">
                                 <div class="col-sm-6"><img src={{as.imgUrl}} alt="Avatar" width="100%"> </div>
@@ -54,8 +71,14 @@
                         </div>
                         <div class="selected-app" ng-show="!as.name">App Server</div>
                     </div>
-                    <div class="panel-body">
-                        <div class="blueprint-container" ng-show="db.name">
+                    <div class="blueprint-selected-container" droppable drop="handleDrop">
+                        <button class="close-x">
+                                X
+                        </button>
+                        <button class="count-x">
+                                4
+                        </button>
+                        <div class="blueprint-selected-container" ng-show="db.name">
                             <div class="row" ng-click="show()">
                                 <div class="col-sm-6"><img src={{db.imgUrl}} alt="Avatar" width="100%"> </div>
                                 <div class="col-sm-6">
@@ -65,6 +88,13 @@
                         </div>
                         <div class="selected-app" ng-show="!db.name">Database</div>
                     </div>
+                    <div>
+                        <button type="button" class="btn btn-success btn-md">Next</button>
+                        <button type="button" class="btn btn-danger btn-md">Cancel</button>
+                    </div>
                 </div>
             </div>
+        </div>
+
+    </div>
 </section>

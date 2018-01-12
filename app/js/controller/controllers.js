@@ -61,7 +61,11 @@ angular.module('snCodeAnalyserApp.controllers', ['snCodeAnalyserApp.services', '
       }
       
       $scope.$apply();
-    })
+    });
+
+    $scope.handleDrop = function(item, bin) {
+      //$scope.em
+    }
   }]);
 
 /**
