@@ -17,7 +17,7 @@
             <div class="col-sm-3 text-center">
                 <div class="">
                     <div class="panel-heading">Selected Apps</div>
-                    <div class="blueprint-selected-container" droppable drop="handleDrop" >
+                    <div class="blueprint-selected-container" droppable drop="handleDrop">
                         <button class="close-x">
                                 X
                         </button>
@@ -25,7 +25,7 @@
                                 1
                         </button>
                         <div class="" ng-show="lb.name">
-                            
+
                             <div class="row" ng-click="show()">
                                 <div class="col-sm-6"><img src={{lb.imgUrl}} alt="Avatar" width="100%"> </div>
                                 <div class="col-sm-6">
@@ -97,4 +97,37 @@
         </div>
 
     </div>
+
+    <!-- Nav bars -->
+    <div class="container">
+        <br/>
+        <div class="page-header">
+            <h1>Panels with nav tabs.<span class="pull-right label label-default">:)</span></h1>
+        </div>
+        <div class="row">
+
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li ng-class="tabIndex == 0 ? 'active' : ''"><a ng-click="showTab(0)" data-toggle="tab">Default 1</a></li>
+                        <li ng-class="tabIndex == 1 ? 'active' : ''"><a ng-click="showTab(1)" data-toggle="tab">Default 2</a></li>
+                        <li ng-class="tabIndex == 2 ? 'active' : ''"><a ng-click="showTab(2)" data-toggle="tab">Default 3</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div ng-class="tabIndex == 0 ? 'tab-pane fade in active' : 'tab-pane fade'" ng-show="tabIndex == 0" id="tab1default">
+                            
+                        </div>
+                        <div ng-class="tabIndex == 1 ? 'tab-pane fade in active' : 'tab-pane fade'" ng-show="tabIndex == 1" id="tab2default">
+                            <canvas id="line-chart" width="800" height="450"></canvas>
+                        </div>
+                        <div ng-class="tabIndex == 2 ? 'tab-pane fade in active' : 'tab-pane fade'" ng-show="tabIndex == 2" id="tab3default">PROVIDER</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br/>
 </section>
