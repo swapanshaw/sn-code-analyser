@@ -62,7 +62,7 @@ app.directive('appStores', function () {
 
 app.directive('draggable', function () {
   return {
-  scope: {
+    scope: {
       blueprint: '='
     },
 
@@ -88,7 +88,7 @@ app.directive('draggable', function () {
         function (e) {
           this.classList.remove('drag');
           console.log('DRAGEED END' + $scope.blueprint.name)
-          $scope.$emit('myEvent',$scope.blueprint);
+          $scope.$emit('myEvent', $scope.blueprint);
           return false;
         },
         false
@@ -98,55 +98,111 @@ app.directive('draggable', function () {
 });
 
 app.directive('droppable', function () {
-  return {
-    scope: {
-      drop: '&',
-      bin: '='
-    },
-    link: function ($scope, element, iAttrs) {
-      // again we need the native object
-      var el = element[0];
+    return {
+      scope: {
+        drop: '&',
+        bin: '='
+      },
+      link: function ($scope, element, iAttrs) {
+        // again we need the native object
+        var el = element[0];
 
-      el.addEventListener(
-        'dragover',
-        function (e) {
-          e.dataTransfer.dropEffect = 'move';
-          // allows us to drop
-          if (e.preventDefault) e.preventDefault();
-          this.classList.add('over');
-          return false;
-        },
-        false
-      );
+        el.addEventListener(
+          'dragover',
+          function (e) {
+            e.dataTransfer.dropEffect = 'move';
+            // allows us to drop
+            if (e.preventDefault) e.preventDefault();
+            this.classList.add('over');
+            return false;
+          },
+          false
+        );
 
-      el.addEventListener(
-        'dragenter',
-        function (e) {
-          this.classList.add('over');
-          return false;
-        },
-        false
-      );
+        el.addEventListener(
+          'dragenter',
+          function (e) {
+            this.classList.add('over');
+            return false;
+          },
+          false
+        );
 
-      el.addEventListener(
-        'dragleave',
-        function (e) {
-          this.classList.remove('over');
-          return false;
-        },
-        false
-      );
+        el.addEventListener(
+          'dragleave',
+          function (e) {
+            this.classList.remove('over');
+            return false;
+          },
+          false
+        );
 
-      el.addEventListener(
-        'drop',
-        function (e) {
-          // Stops some browsers from redirecting.
-          if (e.stopPropagation) e.stopPropagation();
-          this.classList.remove('over');
-          return false;
-        },
-        false
-      );
+        el.addEventListener(
+          'drop',
+          function (e) {
+            // Stops some browsers from redirecting.
+            if (e.stopPropagation) e.stopPropagation();
+            this.classList.remove('over');
+            return false;
+          },
+          false
+        );
+      }
     }
-  }
-});
+  })
+
+  .directive('line', function () {
+
+    var directiveDefinitionObject = {
+
+      restrict: 'E',
+      replace: false,
+      scope: {
+        data: '=',
+        width: '@',
+        height: '@'
+      },
+      link: function ($scope, element, attrs) {
+        console.log('executing link function' + JSON.stringify($scope.data))
+        //This is the accessor function we talked about above
+
+        var lineFunction = d3.line
+          .x(function (d) {
+            console.log('---' + d.month)
+            return (d.month * 25);
+          })
+          .y(function (d) {
+            return ($scope.height - d.sales);
+          }).interpolate("linear");
+
+        //The SVG Container
+        var svgContainer = d3.select(element[0]).append("svg")
+          .attr("width", $scope.width)
+          .attr("height", $scope.height);
+
+        //The line SVG Path we draw
+        var lineGraph = svgContainer.append("path")
+          .attr("d", lineFunction($scope.data))
+          .attr("stroke", "#ddd")
+          .attr("stroke-width", 2)
+          .attr("fill", "none");
+
+        var level = svgContainer.selectAll('text')
+          .data($scope.data)
+          .enter()
+          .append('text')
+          .text(function (d) {
+            return d.sales
+          })
+          .attr({
+            x: function (d) {
+              return d.month * 25
+            },
+            y: function (d) {
+              return $scope.height - d.sales
+            }
+          })
+      }
+    };
+    return directiveDefinitionObject;
+  });

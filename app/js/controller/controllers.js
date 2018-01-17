@@ -67,6 +67,19 @@ controller('dashboardCtrl', ['$scope', 'bluePrintsService', function ($scope, bl
     //$scope.em
   }
 
+  $scope.myData = [
+    	{month:1, sales:20},
+      {month:2, sales:10},
+      {month:3, sales:80},
+      {month:4, sales:50},
+      {month:5, sales:70},
+      {month:6, sales:40},
+      {month:7, sales:40},
+      {month:8, sales:20},
+      {month:9, sales:55},
+      {month:10, sales:10}
+  ];
+  console.log('Daashboard Ctrl'+ $scope.myData);
   $scope.tabIndex = 0;
   //$scope.showTab();
   $scope.showTab = function (tabIndex) {
@@ -75,62 +88,11 @@ controller('dashboardCtrl', ['$scope', 'bluePrintsService', function ($scope, bl
       date: ['2013-01-04 22:23:00', '2013-02-04 22:23:00', '2013-03-04 22:23:00', '2013-04-04 22:23:00'],
       close: [10, 30, 6, 25],
     }
-    plotLine(data);
+    //plotLine(data);
   }
 
 }]);
 
-
-function plotLine(d) {
-
-  var data = {
-    labels: d.date,
-    datasets: [{
-        label: "TeamA Score",
-        data: d.close,
-        backgroundColor: "blue",
-        borderColor: "lightblue",
-        fill: false,
-        lineTension: 0,
-        radius: 5
-      },
-      {
-        label: "TeamB Score",
-        data: [20, 35, 40, 60, 50],
-        backgroundColor: "green",
-        borderColor: "lightgreen",
-        fill: false,
-        lineTension: 0,
-        radius: 5
-      }
-    ]
-  };
-  //options
-  var options = {
-    responsive: true,
-    title: {
-      display: true,
-      position: "top",
-      text: "Line Graph",
-      fontSize: 18,
-      fontColor: "#111"
-    },
-    legend: {
-      display: true,
-      position: "bottom",
-      labels: {
-        fontColor: "#333",
-        fontSize: 16
-      }
-    }
-  };
-
-  var stackedLine = new Chart(document.getElementById("line-chart"), {
-    type: 'line',
-    data: data,
-    options: options
-  });
-}
 
 /**
  * isAutheticated
